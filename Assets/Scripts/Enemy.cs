@@ -24,7 +24,9 @@ public class Enemy : MonoBehaviour
     public int sightRange,attackRange;
     private bool playerInSightRange; 
     private bool playerInAttackRange;
-    
+
+    public Material mainMaterial;
+    public Material visionMaterial;
 
 
     private Animator animator;
@@ -107,6 +109,7 @@ public class Enemy : MonoBehaviour
     }
     public void DealDamage()
     {
+        if(Vector3.Distance(transform.position,player.transform.position) <= 2.5f)
         playerScript.TakeDamage();
     }
 

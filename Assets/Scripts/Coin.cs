@@ -5,6 +5,10 @@ using UnityEngine;
 public class Coin : Collectable
 {
     private float rotationSpeed = 15f;
+    protected override void Start()
+    {
+        base.Start();
+    }
     void Update()
     {
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);

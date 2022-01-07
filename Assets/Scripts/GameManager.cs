@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject CoinPrefab;
     public TMP_Text Scoreboard;
     public TMP_Text HealthPoints;
+    public BoostManager boostManager;
     public int PlayerHealth;
     public int Points = 0;
     public GameObject[] enemies;

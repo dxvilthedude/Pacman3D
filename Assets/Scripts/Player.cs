@@ -7,12 +7,13 @@ public class Player : MonoBehaviour
     public int Health = 5;
     private GameManager manager;
     private AnimationStateController animationController;
+    private ThirdPersonMovement movement;
     private void Start()
     {
         manager = FindObjectOfType<GameManager>();
         animationController = GetComponent<AnimationStateController>();
+        movement = GetComponent<ThirdPersonMovement>();
     }
-
     public void TakeDamage()
     {
         if(Health > 0)
@@ -33,4 +34,7 @@ public class Player : MonoBehaviour
     {
         GetComponent<AnimationStateController>().VictoryDance();
     }
+    
+    private void Unboost()
+    { movement.speed = 6; }
 }

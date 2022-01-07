@@ -741,11 +741,15 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 8
+  playerAlive: 1
+  CanMove: 1
   walkPoint: {x: 0, y: 0, z: 0}
   WalkPointRange: 15
   timeBetweenAttacks: 3
   sightRange: 10
   attackRange: 2
+  mainMaterial: {fileID: 2100000, guid: cfb80cbbf41ca2f4c86b8004b5090afb, type: 2}
+  visionMaterial: {fileID: 2100000, guid: 8683f414110d47a45b4a7a02ea2e0532, type: 2}
 --- !u!1 &2151809724934755629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1251,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1958756471826603212, guid: 86c021df1422c8d40a4f21d1a6f0d122, type: 3}
+  - {fileID: 2100000, guid: cfb80cbbf41ca2f4c86b8004b5090afb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
