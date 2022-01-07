@@ -15,10 +15,11 @@ public abstract class Boost : Collectable
     {
         if (other.tag == "Player")
         {
+            manager.CollectBoost();
             boostManager.BoostUI.text = boostName + " :";
             BoostEffect();
             boostManager.BoostOnMap = false;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);            
         }
     }
     public abstract void BoostEffect();    

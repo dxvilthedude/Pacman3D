@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     public Player _player;
     private int maxPoints = 50;
     private float spawnCheckCollision = .5f;
+    private PlayerAudio pAudio;
 
     private void Start()
     {
         _player = Player.GetComponent<Player>();
+        pAudio = Player.GetComponent<PlayerAudio>();
         SpawnEnemy();
         SpawnCoins();
         ScoreUpdate();
@@ -59,16 +61,15 @@ public class GameManager : MonoBehaviour
     }
     public void CollectCoin()
     {
+        pAudio.CollectCoinSFX();
         Points++;
         ScoreUpdate();
         if (Points == 50)
             GameOver(true);
     }
-
-    private void Update()
+    public void CollectBoost()
     {
-        if (Input.GetKey(KeyCode.P))
-            CollectCoin();
+        pAudio.CollectBoostSFX();
     }
     public void GameOver(bool win)
     {
