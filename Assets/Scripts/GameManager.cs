@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text Scoreboard;
     public TMP_Text HealthPoints;
     public BoostManager boostManager;
-    public int PlayerHealth;
-    public int Points = 0;
     public GameObject[] enemies;
     public Transform CoinsGO;
-    public Player _player;
+    public int Points = 0;
+
+    private Player _player;
     private int maxPoints = 50;
     private float spawnCheckCollision = .5f;
     private PlayerAudio pAudio;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
     }
     public void CollectCoin()
     {
-        pAudio.CollectCoinSFX();
+        GameEvents.current.CoinCollect();
         Points++;
         ScoreUpdate();
         if (Points == 50)

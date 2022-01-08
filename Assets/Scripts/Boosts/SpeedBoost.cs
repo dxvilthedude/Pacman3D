@@ -8,7 +8,7 @@ public class SpeedBoost : Boost
     protected override void Start()
     {
         base.Start();
-        boostName = "SPEEDBOOST";
+        boostName = "SPEED BOOST";
         boostManager.SpawnInfo(boostName);
     }
     private void Update()

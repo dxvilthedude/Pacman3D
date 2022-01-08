@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Player playerScript;
     private Transform player;
     private NavMeshAgent agent;
+    private AudioSource audioS;
     //Patroling
     public Vector3 walkPoint;
     public float WalkPointRange;
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         playerScript = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        audioS = GetComponent<AudioSource>();
         isRunningHash = Animator.StringToHash("isRunning");
         isAttackingHash = Animator.StringToHash("isAttacking");
         dancingHash = Animator.StringToHash("isDancing");
@@ -129,6 +131,11 @@ public class Enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    public void AttackSFX()
+    {
+        audioS.Play();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -136,4 +143,5 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, sightRange);
     }
+    
 }

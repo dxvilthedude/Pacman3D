@@ -9,7 +9,7 @@ public class VisionBoost : Boost
     protected override void Start()
     {
         base.Start();
-        boostName = "VISIONBOOST";
+        boostName = "X-RAY BOOST";
         boostManager.SpawnInfo(boostName);
     }
     private void Update()

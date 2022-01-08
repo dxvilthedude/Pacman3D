@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class BoostManager : MonoBehaviour
 {
     public TMP_Text BoostUI;
@@ -18,6 +19,7 @@ public class BoostManager : MonoBehaviour
     private float stargingTime = 20f;
     private GameManager gameManager;
     private float spawnCheckCollision = .5f;
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -41,10 +43,11 @@ public class BoostManager : MonoBehaviour
             }
         }
         if (BoostUI.gameObject.activeSelf)
-            BoostCounter.text = currentTime.ToString("0");
-
-        
+            BoostCounter.text = currentTime.ToString("0");   
     }
+    //--------------------------
+    //MMIEJSCE NA JOB DLA COINÓW
+    //--------------------------
 
     private void SpawnBoost()
     {
@@ -56,7 +59,7 @@ public class BoostManager : MonoBehaviour
         {
             spawnPoint = new Vector3(Random.Range(4, 44), 1, Random.Range(6, 60));
         }
-        Instantiate(BoostTypes[Random.Range(0, BoostTypes.Length)], spawnPoint, Random.rotation);
+        Instantiate(BoostTypes[Random.Range(0, BoostTypes.Length)], spawnPoint, Quaternion.identity);
         BoostOnMap = true;        
     }
     public void SpawnInfo(string name)
@@ -72,6 +75,7 @@ public class BoostManager : MonoBehaviour
     }
     public void SpeedBoost()
     {
+        Unboost();
         currentTime = stargingTime;
         movement.speed = 10;
         boostActive = true;
@@ -97,6 +101,7 @@ public class BoostManager : MonoBehaviour
     }
     public void VisionBoost()
     {
+        Unboost();
         currentTime = stargingTime;
         boostActive = true;
         visionBoostActive = true;

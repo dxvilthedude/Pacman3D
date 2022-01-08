@@ -10,8 +10,6 @@ public class PlayerAudio : MonoBehaviour
 
     public void Footstep()
     { audioS.Play(); }
-    public void CollectCoinSFX()
-    { AudioSource.PlayClipAtPoint(collectSounds[0], transform.position,1f); }
     public void CollectBoostSFX()
     { AudioSource.PlayClipAtPoint(collectSounds[1],transform.position, 1f); }
 
