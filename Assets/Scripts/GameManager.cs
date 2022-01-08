@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -23,14 +24,38 @@ public class GameManager : MonoBehaviour
     private float spawnCheckCollision = .5f;
     private PlayerAudio pAudio;
 
+    public int countdownTime;
+    public TMP_Text countdownDisplay;
     private void Start()
     {
+        StartCoroutine(CountdownToStart());
         _player = Player.GetComponent<Player>();
         pAudio = Player.GetComponent<PlayerAudio>();
         SpawnEnemy();
         SpawnCoins();
         ScoreUpdate();
         HealthUpdate();       
+    }
+
+    IEnumerator CountdownToStart()
+    {
+        while (countdownTime > 0)
+        {
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+
+            countdownTime--;
+        }
+
+        countdownDisplay.text = "GO!";
+        Player.GetComponent<ThirdPersonMovement>().CanMove = true;
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<Enemy>().CanMove = true;    
+        }
+        yield return new WaitForSeconds(1f);
+        countdownDisplay.gameObject.SetActive(false);
+
     }
 
     private void SpawnCoins()
